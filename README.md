@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Figma Wireframe: https://www.figma.com/design/sgtEO6tfSd6rgiXKP9fyPF/reddit-search-engine-wireframe?node-id=0%3A1&t=LbegXJkA1K8MvRKS-1
 
 ## Available Scripts
 
