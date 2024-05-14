@@ -1,5 +1,7 @@
 
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './store.js';
 import {
   Route,
   BrowserRouter,
@@ -9,6 +11,7 @@ import PageTemplate from './PageTemplate.js';
 import Trending from '../features/trending/Trending.js';
 function App() {
   return (
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route element={<PageTemplate />}>
@@ -16,6 +19,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </Provider>
   );
 }
 

@@ -3,12 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchBarSlice = createSlice({
     name: "searchBar",
     initialState: {
-        currentSearch: ''
+        currentSearch: ' '
     },
     reducers: {
         submitSearch: (state, action) => {
-            const { text } = action.payload;
-            state.currentSearch = text;
+            state.currentSearch = action.payload;
         }
     }
 });

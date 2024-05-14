@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import{ submitSearch, selectCurrentSearch } from './searchBarSlice.js';
-import { useSelector } from 'react-redux';
+import { submitSearch, selectCurrentSearch } from './searchBarSlice.js';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function SearchBar() {
+    const dispatch = useDispatch();
     const search = useSelector(selectCurrentSearch);
     const [text, setText] = useState('');
     const handleChange = (e) => {
@@ -12,7 +13,7 @@ export default function SearchBar() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        submitSearch({text: text});
+        dispatch(submitSearch(text));
         setText('');
         console.log(search)
     }
