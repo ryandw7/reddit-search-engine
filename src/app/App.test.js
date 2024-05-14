@@ -1,7 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import App from './App.js';
-import { toContainElement } from '@testing-library/jest-dom/matchers';
-import SearchBar from '../features/searchBar/SearchBar.js'
 
 test('it renders search bar feature', () => {
   render(<App />);
