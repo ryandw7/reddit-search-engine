@@ -1,4 +1,4 @@
-#Reddit Search Engine
+# Reddit Search Engine
 
 Figma Wireframe: https://www.figma.com/design/sgtEO6tfSd6rgiXKP9fyPF/reddit-search-engine-wireframe?node-id=0%3A1&t=LbegXJkA1K8MvRKS-1
 
