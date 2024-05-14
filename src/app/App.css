@@ -1,38 +1,40 @@
-.App {
-  text-align: center;
+.Page-template {
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 95vh;
+  width: 95vw;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search-bar {
+  height: 15%;
+  width: 75%;
+  border: 3px solid black;
 }
 
+.profile {
+  height: 15%;
+  width: 20%;
+  border: 3px solid black;
+}
+
+.trending {
+  border: 3px solid black;
+  height: 60%;
+  width: 75%;
+}
+
+.subreddits {
+  border: 3px solid black;
+  height: 60%;
+  width: 20%;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

@@ -1,23 +1,21 @@
 
 import './App.css';
-
+import {
+  Route,
+  BrowserRouter,
+  Routes
+} from "react-router-dom";
+import PageTemplate from './PageTemplate.js';
+import Trending from '../features/trending/Trending.js';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<PageTemplate />}>
+          <Route path="/" element={<Trending />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
