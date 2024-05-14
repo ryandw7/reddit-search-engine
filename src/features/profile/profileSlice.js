@@ -4,7 +4,9 @@ const profileSlice = createSlice({
   name: "profile",
   initialState: {},
   reducers: {
-    
+    blank: (state, action) => {
+      state = action.payload
+    }
   }
 });
 

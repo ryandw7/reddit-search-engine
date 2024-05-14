@@ -8,4 +8,4 @@ const trendingSlice = createSlice({
   }
 });
 
-export default trendingSlice.reducer
+export default trendingSlice.reducer;

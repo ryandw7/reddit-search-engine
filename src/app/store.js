@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-const store = configureStore({
-    searchBar: searchBarSlice,
-    profile: profileSlice,
-    trending: trendingSlice,
-    subreddits: subredditsSlice
+import searchBarSlice from '../features/searchBar/searchBarSlice.js';
+import profileSlice from '../features/profile/profileSlice.js';
+import trendingSlice from '../features/trending/trendingSlice.js';
+import subredditsSlice from '../features/subreddits/subredditsSlice.js';
+export default configureStore({
+    reducer: {
+        searchBar: searchBarSlice,
+    
+    }
 });
 
-export default store;
+ 
