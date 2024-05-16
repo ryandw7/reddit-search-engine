@@ -9,7 +9,7 @@ export default function SearchBar() {
     const handleChange = (e) => {
         const value = e.target.value;
         setText(value);
-        console.log(text)
+        console.log(text);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
