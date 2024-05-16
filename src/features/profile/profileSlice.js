@@ -1,25 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import  fetchAccessTokenPromise  from '../../API/fetchAccessTokenPromise.js'
 export const fetchAccessToken = createAsyncThunk(
-  'profile/fetchAccessToken', async (code, thunkAPI) => {
-
-   
-
+  'profile/fetchAccessToken', async(code) => {
+      const res = await fetchAccessTokenPromise(code);
+      sessionStorage.setItem("access_token", res);
+      return res;
   }
 )
 const profileSlice = createSlice({
   name: "profile",
   initialState: {
     status: '',
-    authCode: '',
     accessToken: '',
     error: ''
   },
-  reducers: {
-    fetchAuthCode: (state, action) => {
-      state.authCode = action.payload
-    }
-  },
+  
   extraReducers: (builder) => {
     builder
       .addCase(fetchAccessToken.pending, (state) => {
@@ -35,6 +30,7 @@ const profileSlice = createSlice({
       })
   }
 });
+export const selectStatus = (state) => state.profile.status;
 export const selectAccessToken = (state) => state.profile.accessToken;
 export const selectAuthCode = (state) => state.profile.authCode;
 export const { fetchAuthCode } = profileSlice.actions;

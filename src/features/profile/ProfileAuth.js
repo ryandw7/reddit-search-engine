@@ -1,30 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { AUTH_URL } from '../../API/globalAuth.js';
-//import { fetchAccessToken, fetchAuthCode, selectAuthCode, selectAccessToken } from './profileSlice.js';
-//import { useDispatch, useSelector } from "react-redux";
-import fetchAccessToken from "../../API/fetchAccessToken.js";
-import { useEffect, useState } from "react";
+import { selectStatus } from './profileSlice.js';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAccessToken } from "./profileSlice.js";
 export default function Profile() {
-    const [code, setCode] = useState('');
-    const [accessToken, setAccessToken] = useState('')
-    //const authCode = useSelector(selectAuthCode);
-    //const accessToken = useSelector(selectAccessToken);
-    //const dispatch = useDispatch();
+    const status = useSelector(selectStatus);
+    const dispatch = useDispatch();
     const w = window.location.href;
 
-    if (w.includes('code=') && !code) {
+    if (w.includes('code=') && !status && sessionStorage.getItem("access_token") === null) {
         let code = w.split('code=')[1];
         code = code.split('#')[0];
-        setCode(code);
-        
+        dispatch(fetchAccessToken(code))
     }
-    
-        if(!accessToken && code){
-             fetchAccessToken(code).then(res => setAccessToken(res))
-        }
- 
-
-
+    console.log(sessionStorage.getItem("access_token"));
     return (
         <div className="profile" data-testid="profile">
             <NavLink to={AUTH_URL}>Sign in</NavLink>
