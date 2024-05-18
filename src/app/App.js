@@ -8,14 +8,14 @@ import {
   Routes
 } from "react-router-dom";
 import PageTemplate from './PageTemplate.js';
-import Trending from '../features/trending/Trending.js';
+import HomePage from '../pages/HomePage.js';
 function App() {
   return (
     <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route element={<PageTemplate />}>
-          <Route path="/" element={<Trending />} />
+          <Route path="/" element={<HomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
