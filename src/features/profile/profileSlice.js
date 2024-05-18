@@ -12,9 +12,14 @@ const profileSlice = createSlice({
   initialState: {
     status: '',
     accessToken: '',
+    signedIn: false,
     error: ''
   },
-  
+  reducers: {
+    setSignedIn: (state, action) =>{
+      state.signedIn = action.payload;
+    }
+  } ,
   extraReducers: (builder) => {
     builder
       .addCase(fetchAccessToken.pending, (state) => {
@@ -30,8 +35,8 @@ const profileSlice = createSlice({
       })
   }
 });
+export const selectSignedIn = (state) => state.profile.signedIn;
 export const selectStatus = (state) => state.profile.status;
 export const selectAccessToken = (state) => state.profile.accessToken;
-export const selectAuthCode = (state) => state.profile.authCode;
-export const { fetchAuthCode } = profileSlice.actions;
+export const { setSignedIn } = profileSlice.actions;
 export default profileSlice.reducer;

@@ -12,7 +12,7 @@ const RANDOM_STRING = () => {
     let string = arr.toString();
     return string.replace(/,/g, "");
 }
-const REDIRECT_URI = 'https://psychic-space-funicular-4x957wwg649hq469-3000.app.github.dev/'
+const REDIRECT_URI = 'https://ominous-garbanzo-qwgjqpp9px7c4wqr-3000.app.github.dev/'
 
 const DURATION = 'temporary';
 
