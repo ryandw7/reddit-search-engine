@@ -7,7 +7,8 @@ export default configureStore({
     reducer: {
         searchBar: searchBarSlice,
         profile: profileSlice,
-        listings: listingsSlice
+        listings: listingsSlice,
+        subreddits: subredditsSlice
     }
 });
 

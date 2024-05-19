@@ -9,7 +9,6 @@ export const fetchHomeListings = createAsyncThunk(
             return data;
 
         } catch (error) {
-            console.log(error);
             return error;
         }
     }

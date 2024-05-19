@@ -1,5 +1,5 @@
-export default function Profile(){
+export default function Profile({user}) {
   return (
     <p>test</p>
-  )  
+  )
 }

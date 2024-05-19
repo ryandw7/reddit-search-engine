@@ -10,7 +10,6 @@ export default function HomeListings() {
     useEffect(() => {
         dispatch(fetchHomeListings())
     }, [])
-    console.log(homeListings)
     return (
         <div data-testid="home-listings" className="home-listings">
             {homeListings.map(listing => <Listing listing={listing.data} key={listing.data.id}/>)}

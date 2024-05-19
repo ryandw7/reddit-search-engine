@@ -8,7 +8,6 @@ import profileSlice from '../features/profile/profileSlice.js';
 import Profile from '../components/Profile.js'
 export default function PageTemplate() {
     const signedIn = useSelector(selectSignedIn);
-    console.log(signedIn)
     const codeURL = window.location.href
     const parseCodeURL = (url) => {
         return url.split('code=');
@@ -20,7 +19,7 @@ export default function PageTemplate() {
             <SearchBar />
            {signedIn ? <Profile /> : <ProfileAuth />}
             <Outlet />
-            <Subreddits />
+           { <Subreddits />}
         </div>
 
 
