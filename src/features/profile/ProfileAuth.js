@@ -11,8 +11,8 @@ export default function Profile() {
     if (w.includes('code=') && !status && sessionStorage.getItem("access_token") === null) {
         let code = w.split('code=')[1];
         code = code.split('#')[0];
-        dispatch(fetchAccessToken(code)).then(dispatch(fetchUserInfo())).then(dispatch(setSignedIn(true)));
-    }else if(!status && sessionStorage.getItem("access_token")){
+        dispatch(fetchAccessToken(code)).then(dispatch(fetchUserInfo())).then(dispatch(setSignedIn(true))).catch(error => console.log(error));
+    } else if (!status && sessionStorage.getItem("access_token")) {
         dispatch(setSignedIn(true))
     }
     return (

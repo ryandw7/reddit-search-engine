@@ -16,7 +16,8 @@ export const fetchSubscribedSubreddits = createAsyncThunk(
 const subredditsSlice = createSlice({
   name: "subreddits",
   initialState: {
-    subscribedSubreddits: []
+    subscribedSubreddits: [],
+    status: ''
   },
   extraReducers: (builder) => {
     builder
@@ -32,5 +33,6 @@ const subredditsSlice = createSlice({
       })
   }
 });
-export const selectSubreddits = (state) => state.subreddits.subscribedSubreddits
+export const selectSubreddits = (state) => state.subreddits.subscribedSubreddits;
+export const selectStatus = (state) => state.subreddits.status;
 export default subredditsSlice.reducer;
