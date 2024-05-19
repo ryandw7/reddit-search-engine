@@ -14,7 +14,7 @@ export default function PageTemplate() {
         <div className="Page-template">
             <p></p>
             <SearchBar />
-            {signedIn ? <Profile /> : <ProfileAuth />}
+            <ProfileAuth />
             <Outlet />
             {signedIn && token ? <Subreddits /> : <div className="subreddits">
                 Sign In to view your subreddits
