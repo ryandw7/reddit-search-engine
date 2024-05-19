@@ -24,6 +24,7 @@
   border: 3px solid black;
   height: 60%;
   width: 75%;
+  overflow-y: scroll;
 }
 
 .subreddits {
@@ -31,10 +32,18 @@
   height: 60%;
   width: 20%;
 }
+
+.listing {
+  margin: 20px auto;
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.listing-title, .listing-author, .listing-sr-name {
+margin: 0 auto;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-

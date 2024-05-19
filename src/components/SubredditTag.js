@@ -1,8 +1,10 @@
-export default function SubredditTag({subreddit}){
+import { NavLink } from "react-router-dom";
+
+export default function SubredditTag({ subreddit }) {
 
     return (
-       <div data-testid="subreddit-tag" className="subreddit-tag">
-                 <p>subreddit tag test</p>
-       </div>
+        <li data-testid="subreddit-tag" className="subreddit-tag">
+                <NavLink>r/{subreddit.display_name}</NavLink>
+        </li>
     )
 }

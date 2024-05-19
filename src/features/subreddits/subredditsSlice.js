@@ -6,7 +6,7 @@ export const fetchSubscribedSubreddits = createAsyncThunk(
     try {
     const res = await fetchSubscribedSubredditsPromise(token);
     console.log(res);
-    return res.json();
+    return res;
   }catch (error){
     console.log(error);
     return error;
