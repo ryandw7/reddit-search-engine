@@ -1,10 +1,20 @@
 import { selectSignedIn } from "../profile/profileSlice";
 import { useSelector } from "react-redux";
-import { selectSubreddits } from "./subredditsSlice";
+import { useEffect } from "react";
+import { selectSubreddits, fetchSubscribedSubreddits } from "./subredditsSlice";
 import SubredditTag from "../../components/SubredditTag";
+import { useDispatch } from "react-redux";
 export default function Subreddits(){
+    const dispatch = useDispatch();
     const signedIn = useSelector(selectSignedIn);
+    useEffect(()=>{
+        if(signedIn){
+            console.log('fetching')
+           dispatch(fetchSubscribedSubreddits());
+        }
+    }, [])
     const subreddits = useSelector(selectSubreddits);
+    console.log(subreddits)
     return (
         <div className="subreddits" data-testid="subreddits">
         {signedIn ?

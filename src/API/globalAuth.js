@@ -16,7 +16,7 @@ const REDIRECT_URI = 'https://ominous-garbanzo-qwgjqpp9px7c4wqr-3000.app.github.
 
 const DURATION = 'temporary';
 
-const SCOPE_STRING = 'identity, read, account'
+const SCOPE_STRING = 'identity, read, account, mysubreddits'
 
 const AUTH_URL = `https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=${TYPE}&state=${RANDOM_STRING()}&redirect_uri=${REDIRECT_URI}&duration=${DURATION}&scope=${SCOPE_STRING}`
 
