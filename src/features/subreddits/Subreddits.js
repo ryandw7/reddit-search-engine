@@ -1,27 +1,34 @@
 import { selectSignedIn } from "../profile/profileSlice";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { selectSubreddits, fetchSubscribedSubreddits, selectStatus } from "./subredditsSlice";
+import { selectSubreddits, fetchSubscribedSubreddits, selectStatus, clearSubreddits } from "./subredditsSlice";
 import SubredditTag from "../../components/SubredditTag";
 import { useDispatch } from "react-redux";
+
 export default function Subreddits() {
+
     const dispatch = useDispatch();
+    const signedIn = useSelector(selectSignedIn);
     const status = useSelector(selectStatus);
-    useEffect(() => {
-        if (!status) {
-            console.log('fetching');
-            dispatch(fetchSubscribedSubreddits());
-        }
-    }, [])
     const subreddits = useSelector(selectSubreddits);
+    
+    useEffect(() => {
+        if (!status && signedIn) {
+            dispatch(fetchSubscribedSubreddits());
+        } else if (!signedIn) {
+            dispatch(clearSubreddits())
+        }
+    }, [signedIn])
 
     return (
         <div className="subreddits" data-testid="subreddits">
             <h2>Subreddits</h2>
-
-            <ul>
-                {subreddits && subreddits.map(subreddit => <SubredditTag subreddit={subreddit.data} key={subreddit.data.id} />)}
-            </ul>
+            {subreddits.length > 0 ?
+                <ul>
+                    {subreddits.map(subreddit => <SubredditTag subreddit={subreddit.data} key={subreddit.data.id} />)}
+                </ul>
+                : <p>Sign in to view your subreddits</p>
+            }
 
 
         </div>

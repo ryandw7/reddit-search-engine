@@ -4,13 +4,11 @@ export const fetchSubscribedSubreddits = createAsyncThunk(
   'subreddits/fetchSubscribedSubreddits', async () => {
     const token = sessionStorage.getItem("access_token");
     try {
-    const res = await fetchSubscribedSubredditsPromise(token);
-    console.log(res);
-    return res;
-  }catch (error){
-    console.log(error);
-    return error;
-  }
+      const res = await fetchSubscribedSubredditsPromise(token);
+      return res;
+    } catch (error) {
+      return error;
+    }
   }
 )
 const subredditsSlice = createSlice({
@@ -19,20 +17,26 @@ const subredditsSlice = createSlice({
     subscribedSubreddits: [],
     status: ''
   },
+  reducers: {
+    clearSubreddits: (state) => {
+      state.subscribedSubreddits = [];
+    }
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchSubscribedSubreddits.pending, (state)=>{
+      .addCase(fetchSubscribedSubreddits.pending, (state) => {
         state.status = 'pending';
       })
-      .addCase(fetchSubscribedSubreddits.fulfilled, (state, action)=>{
+      .addCase(fetchSubscribedSubreddits.fulfilled, (state, action) => {
         state.status = 'fulfilled';
         state.subscribedSubreddits = action.payload;
       })
-      .addCase(fetchSubscribedSubreddits.rejected, (state)=>{
+      .addCase(fetchSubscribedSubreddits.rejected, (state) => {
         state.status = 'rejected';
       })
   }
 });
+export const { clearSubreddits } = subredditsSlice.actions;
 export const selectSubreddits = (state) => state.subreddits.subscribedSubreddits;
 export const selectStatus = (state) => state.subreddits.status;
 export default subredditsSlice.reducer;

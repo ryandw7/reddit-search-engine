@@ -11,6 +11,7 @@ const searchBarSlice = createSlice({
         }
     }
 });
+
 export const selectCurrentSearch = (state) => state.searchBar.currentSearch;
 export const { submitSearch } = searchBarSlice.actions;
 export default searchBarSlice.reducer;

@@ -60,6 +60,7 @@ const profileSlice = createSlice({
       })
   }
 });
+
 export const selectProfileInfo = (state) => state.profile.profileInfo;
 export const selectSignedIn = (state) => state.profile.signedIn;
 export const selectStatus = (state) => state.profile.status;
