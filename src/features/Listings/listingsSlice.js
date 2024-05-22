@@ -1,13 +1,14 @@
-import { createSlice, createAsyncThunk, thunkApi } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
 export const fetchHomeListings = createAsyncThunk(
     'listings/fetchListings',
-    async (thunkApi) => {
+    async () => {
+
         try {
             const res = await fetch('https://www.reddit.com/r/all/top/.json');
             const json = await res.json();
             const data = await json.data;
             return data;
-
         } catch (error) {
             return error;
         }

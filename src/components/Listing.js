@@ -1,6 +1,7 @@
 import '../app/App.css';
 export default function Listing({ listing }) {
-//test
+    
+    //render listing and media for search results or home listings
     return (
         <div data-testid="listing" className="listing">
             <h4 className="listing-sr-name">{listing.subreddit_name_prefixed}</h4>

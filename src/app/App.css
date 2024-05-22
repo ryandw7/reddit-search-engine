@@ -39,9 +39,12 @@
   padding: 10px;
 }
 
-.listing-title, .listing-author, .listing-sr-name {
-margin: 0 auto;
+.listing-title,
+.listing-author,
+.listing-sr-name {
+  margin: 0 auto;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

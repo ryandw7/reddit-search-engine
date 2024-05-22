@@ -8,7 +8,9 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "babel-plugin-react-compiler": "^0.0.0-experimental-592953e-20240517",
     "base": "^3.0.0",
+    "eslint-plugin-react-compiler": "^0.0.0-experimental-c8b3f72-20240517",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
@@ -20,13 +22,20 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "plugins": [
+      "eslint-plugin-react-compiler"
+    ],
+    "rules": {
+      "react-compiler/react-compiler": "error"
+    }
   },
   "browserslist": {
     "production": [
