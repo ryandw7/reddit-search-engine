@@ -20,8 +20,8 @@ export default function SearchBar() {
     return (
         <div className="search-bar" data-testid="search-bar">
             <form onSubmit={handleSubmit}>
-                <input data-testid="search-bar-input" type="text" name="search" onChange={handleChange} value={text} placeholder="search..." />
-                <button data-testid="search-bar-button" type="submit">Search</button>
+                <input data-testid="search-bar-input" className="search-bar-input" type="text" name="search" onChange={handleChange} value={text} placeholder="search..." />
+                <button data-testid="search-bar-button" className="search-bar-button" type="submit">{'>'}</button>
             </form>
             <div>{search}</div>
         </div>

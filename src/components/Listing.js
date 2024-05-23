@@ -9,7 +9,6 @@ export default function Listing({ listing }) {
             <h3 className="listing-title">{listing.title}</h3>
             <img src={listing.thumbnail} height={listing.thumbnail_height} width={listing.thumbnail_width}/>
             <p>^{listing.ups} comments: {listing.num_comments}</p>
-
         </div>
     )
 }
