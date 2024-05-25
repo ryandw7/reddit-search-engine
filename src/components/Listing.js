@@ -1,14 +1,34 @@
 import '../app/App.css';
-export default function Listing({ listing }) {
-    
+import { useState, useEffect } from 'react';
+export default function Listing({ listing, handleClick }) {
+    const { id, isVideo, preview, subredditName, author, title, thumbnail, thumbnailHeight, thumbnailWidth, numComments, ups, url } = listing;
     //render listing and media for search results or home listings
+    const [hasImg, setHasImg] = useState(false);
+    const [imgUrl, setImgUrl] = useState('')
+
+    useEffect(() => {
+        if (isVideo) {
+            console.log('is video');
+            setHasImg(false)
+        }
+        else if (url.includes('jpg') || url.includes('png') || url.includes('jpeg')) {
+            setHasImg(true)
+            setImgUrl(url)
+        } else if (thumbnail.includes('jpeg') || thumbnail.includes('png') || thumbnail.includes('jpg')) {
+            setHasImg(true);
+            setImgUrl(thumbnail);
+        }
+    }, [])
+
+
     return (
-        <div data-testid="listing" className="listing">
-            <h4 className="listing-sr-name">{listing.subreddit_name_prefixed}</h4>
-            <h5 className="listing-author">u/{listing.author}</h5>
-            <h3 className="listing-title">{listing.title}</h3>
-            <img src={listing.thumbnail} height={listing.thumbnail_height} width={listing.thumbnail_width}/>
-            <p>^{listing.ups} comments: {listing.num_comments}</p>
+
+        <div data-testid="listing" className="listing" onClick={()=>handleClick(id)} id={id}>
+            <h4 className="listing-sr-name">{subredditName}</h4>
+            <h5 className="listing-author">u/{author}</h5>
+            <h3 className="listing-title">{title}</h3>
+            {hasImg && <img src={imgUrl} height={thumbnailHeight} width={thumbnailWidth} />}
+            <p>^{ups} comments: {numComments}</p>
         </div>
     )
 }

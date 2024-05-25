@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { selectHomeListings, fetchHomeListings } from "./listingsSlice";
+import { selectHomeListings, fetchHomeListings, setClickedPost } from "./listingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import '../../app/App.css';
 import Listing from "../../components/Listing";
@@ -12,10 +12,13 @@ export default function HomeListings() {
     useEffect(() => {
         dispatch(fetchHomeListings())
     }, [])
-
+    
+    const handleClick = (id) => {
+        dispatch(setClickedPost(id))
+    }
     return (
         <div data-testid="home-listings" className="home-listings">
-            {homeListings.map(listing => <Listing listing={listing.data} key={listing.data.id}/>)}
+            {homeListings.map(listing => <Listing listing={listing} handleClick={handleClick} id={listing.id} key={listing.id}/>)}
         </div>
     )
 }

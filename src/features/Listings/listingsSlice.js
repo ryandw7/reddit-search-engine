@@ -20,10 +20,13 @@ const listingsSlice = createSlice({
     initialState: {
         sortBy: 'best',
         status: '',
-        listings: []
+        listings: [],
+        clickedPost: ''
     },
     reducers: {
-
+      setClickedPost: (state, action) => {
+        state.clickedPost = action.payload;
+      }
     },
     extraReducers: (builder) => {
         builder
@@ -32,14 +35,32 @@ const listingsSlice = createSlice({
             })
             .addCase(fetchHomeListings.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
-                const listings = action.payload.children;
-                state.listings = listings;
+                const listingsData = action.payload.children;
+                const arr = [];
+                for(const listing in listingsData){
+                  const { is_video, preview, url, id, subreddit, author, title, thumbnail, thumbnail_height, thumbnail_width, ups, num_comments} = listingsData[listing].data;
+                  arr.push({
+                    preview : preview,
+                    url: url,
+                    id: id,
+                    subredditName : subreddit,
+                    author : author,
+                    title : title,
+                    thumbnail : thumbnail,
+                    thumbnailHeight: thumbnail_height,
+                    thumbnailWidth: thumbnail_width,
+                    ups: ups,
+                    numComments: num_comments,
+                    isVideo: is_video
+                  })
+                }
+               state.listings = arr;
             })
             .addCase(fetchHomeListings.rejected, (state) => {
                 state.status = 'rejected'
             })
     }
 })
-
+export const { setClickedPost } = listingsSlice.actions;
 export const selectHomeListings = (state) => state.listings.listings;
 export default listingsSlice.reducer;
