@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { selectHomeListings, fetchHomeListings, setClickedPost } from "./listingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import '../../app/App.css';
-import Listing from "../../components/Listing";
+import Listing from "../../components/listing/Listing";
 
 export default function HomeListings() {
     //dispatch fetch home listings and select home listings to pass into individual listings
