@@ -11,12 +11,9 @@ const rootReducer = combineReducers(
         subreddits: subredditsSlice
     }
 )
-export const setUpStore = (testReducer, preloadedState) => {
+export const setUpStore = ( preloadedState ) => {
     return configureStore({
-        reducer: {
-            rootReducer,
-            testReducer
-        },
+        reducer: rootReducer,
         preloadedState
     });
 }
