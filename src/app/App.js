@@ -1,7 +1,7 @@
 
 import './App.css';
 import { Provider } from 'react-redux';
-import store from './store.js';
+import { setUpStore }from './store.js';
 import {
   Route,
   BrowserRouter,
@@ -10,8 +10,8 @@ import {
 import PageTemplate from './PageTemplate.js';
 import HomePage from '../pages/HomePage.js';
 function App() {
+  
   return (
-    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route element={<PageTemplate />}>
@@ -19,7 +19,6 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-    </Provider>
   );
 }
 

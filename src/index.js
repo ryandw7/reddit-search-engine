@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
-import store from './app/store.js';
+import { setUpStore } from './app/store.js';
 import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+ const preloadedState = {}
+  const store = setUpStore(preloadedState);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
