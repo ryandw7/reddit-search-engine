@@ -8,7 +8,6 @@ export default function PostPage(){
     useEffect(()=>{
     dispatch(fetchPostById(postId));
     }, [])
-    
     return (
         <div className="page">
           <Post />

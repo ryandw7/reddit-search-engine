@@ -4,11 +4,12 @@ import PostBody from '../../components/post/PostBody.js'
 export default function Post(){
     const currentPost = useSelector(selectCurrentPost);
     const status = useSelector(selectFetchPostStatus);
-    console.log(currentPost)
+    console.log(status)
+    console.log(currentPost);
     const loading = <p>Loading...</p>
     const rejected = <p>Failed :/</p>
     const post = <PostBody post={currentPost} />
-    
+    console.log('post')
     const renderPost = () => {
         switch (status){
             case 'pending' : return loading;

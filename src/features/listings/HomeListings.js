@@ -7,7 +7,7 @@ import Listing from "../../components/listing/Listing";
 export default function HomeListings() {
 
     //dispatch fetch home listings and select home listings to pass into individual listings
-   
+    console.log('homeListings')
     const navigate = useNavigate();
     const homeListings = useSelector(selectHomeListings);
     const status = useSelector(selectHomeListingsStatus);

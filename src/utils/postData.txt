@@ -1,0 +1,8 @@
+author
+author_fullname
+id
+is_self ? 
+thumbnail
+subreddit
+title
+ups

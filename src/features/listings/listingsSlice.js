@@ -39,7 +39,10 @@ const listingsSlice = createSlice({
         homeListingsStatus: '',
         fetchPostStatus: '',
         listings: [],
-        currentPost: {}
+        currentPost: {
+            body: {},
+            comments: {}
+        }
     },
     reducers: {
         setCurrentPost: (state, action) => {
@@ -94,10 +97,16 @@ const listingsSlice = createSlice({
                 state.fetchPostStatus = 'rejected'
             })
             .addCase(fetchPostById.pending, (state) => {
-                state.fetchPostStatus = 'pending'
+                state.fetchPostStatus = 'pending';
+            
             })
             .addCase(fetchPostById.fulfilled, (state, action) => {
-                state.currentPost = action.payload;
+                state.currentPost = 
+                { 
+                    body : action.payload[0].data.children[0].data,
+                    comments: action.payload[1].data.children
+                }
+
                 state.fetchPostStatus = 'fulfilled'
             })
             .addCase(fetchPostById.rejected, (state) => {
