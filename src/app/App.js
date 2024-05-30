@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Provider } from 'react-redux';
+import PostPage from '../pages/PostPage.js'
 import { setUpStore }from './store.js';
 import {
   Route,
@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route element={<PageTemplate />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/post/:id" element={<PostPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

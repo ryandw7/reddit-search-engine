@@ -1,16 +1,18 @@
 
-import { selectHomeListings, selectStatus, setClickedPost } from "./listingsSlice";
+import { selectHomeListings, selectStatus,} from "./listingsSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import '../../app/App.css';
 import Listing from "../../components/listing/Listing";
 export default function HomeListings() {
 
     //dispatch fetch home listings and select home listings to pass into individual listings
-
+   
+    const navigate = useNavigate();
     const homeListings = useSelector(selectHomeListings);
     const status = useSelector(selectStatus);
     const handleClick = (id) => {
-        dispatch(setClickedPost(id));
+        navigate(`/post/${id}`)
     }
     const loading = <p>Loading...</p>
     const rejected = <p>Failed :/</p>
@@ -26,7 +28,7 @@ export default function HomeListings() {
         }
     }
     return (
-        <div data-testid="home-listings" className="home-listings">
+        <div data-testid="home-listings" className="page">
             {renderListings()}
         </div>
     )

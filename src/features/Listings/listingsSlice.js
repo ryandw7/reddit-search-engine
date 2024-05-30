@@ -14,17 +14,33 @@ export const fetchHomeListings = createAsyncThunk(
     }
 )
 
+
+export const fetchPostById = createAsyncThunk(
+    'listings/fetchPostById',
+    async (id) => {
+        
+        try {
+            const res = await fetch(`https://www.reddit.com/${id}.json`);
+            const data = await res.json();
+            console.log(data)
+            return data;
+
+        } catch (error) {
+            return error
+        }
+    }
+)
 const listingsSlice = createSlice({
     name: 'listings',
     initialState: {
         sortBy: 'best',
         status: '',
         listings: [],
-        clickedPost: ''
+        currentPost: {}
     },
     reducers: {
-        setClickedPost: (state, action) => {
-            state.clickedPost = action.payload;
+        setCurrentPost: (state, action) => {
+            state.currentPost = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -73,8 +89,18 @@ const listingsSlice = createSlice({
             .addCase(fetchHomeListings.rejected, (state) => {
                 state.status = 'rejected'
             })
-    }
-})
+            .addCase(fetchPostById.pending, (state) => {
+                state.status = 'pending'
+            })
+            .addCase(fetchPostById.fulfilled, (state, action) => {
+                state.currentPost = action.payload;
+                state.status = 'fulfilled'
+            })
+            .addCase(fetchPostById.rejected, (state) => {
+                state.status = 'rejected'
+            })
+        }
+    })
 export const selectStatus = (state) => state.listings.status;
 export const { setClickedPost } = listingsSlice.actions;
 export const selectHomeListings = (state) => state.listings.listings;
