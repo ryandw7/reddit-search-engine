@@ -1,5 +1,5 @@
 
-import { selectHomeListings, selectStatus,} from "./listingsSlice";
+import { selectHomeListings, selectHomeListingsStatus} from "./listingsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import '../../app/App.css';
@@ -10,7 +10,7 @@ export default function HomeListings() {
    
     const navigate = useNavigate();
     const homeListings = useSelector(selectHomeListings);
-    const status = useSelector(selectStatus);
+    const status = useSelector(selectHomeListingsStatus);
     const handleClick = (id) => {
         navigate(`/post/${id}`)
     }

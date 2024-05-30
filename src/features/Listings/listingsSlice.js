@@ -22,8 +22,10 @@ export const fetchPostById = createAsyncThunk(
         try {
             const res = await fetch(`https://www.reddit.com/${id}.json`);
             const data = await res.json();
-            console.log(data)
-            return data;
+            const permalink = data[0].data.children[0].data.permalink;
+            const res2 = await fetch(`https://www.reddit.com${permalink}.json`);
+            const data2 = await res2.json();
+            return data2;
 
         } catch (error) {
             return error
@@ -34,7 +36,8 @@ const listingsSlice = createSlice({
     name: 'listings',
     initialState: {
         sortBy: 'best',
-        status: '',
+        homeListingsStatus: '',
+        fetchPostStatus: '',
         listings: [],
         currentPost: {}
     },
@@ -46,14 +49,14 @@ const listingsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchHomeListings.pending, (state) => {
-                state.status = 'pending';
+                state.homeListingsStatus = 'pending';
             })
             .addCase(fetchHomeListings.fulfilled, (state, action) => {
-                state.status = 'fulfilled';
+                state.homeListingsStatus = 'fulfilled';
                 const listingsData = action.payload.children;
                 const arr = [];
                 for (const listing in listingsData) {
-                    const { is_video, preview, url, id, subreddit, author, title, thumbnail, thumbnail_height, thumbnail_width, ups, num_comments } = listingsData[listing].data;
+                    const { permalink, is_video, preview, url, id, subreddit, author, title, thumbnail, thumbnail_height, thumbnail_width, ups, num_comments } = listingsData[listing].data;
                     let hasImage = false;
                     let imgUrl = null;
                     if (is_video) {
@@ -68,6 +71,7 @@ const listingsSlice = createSlice({
                         imgUrl = thumbnail;
                     }
                     arr.push({
+                        permalink: permalink,
                         preview: preview,
                         url: url,
                         id: id,
@@ -87,21 +91,22 @@ const listingsSlice = createSlice({
                 state.listings = arr;
             })
             .addCase(fetchHomeListings.rejected, (state) => {
-                state.status = 'rejected'
+                state.fetchPostStatus = 'rejected'
             })
             .addCase(fetchPostById.pending, (state) => {
-                state.status = 'pending'
+                state.fetchPostStatus = 'pending'
             })
             .addCase(fetchPostById.fulfilled, (state, action) => {
                 state.currentPost = action.payload;
-                state.status = 'fulfilled'
+                state.fetchPostStatus = 'fulfilled'
             })
             .addCase(fetchPostById.rejected, (state) => {
-                state.status = 'rejected'
+                state.fetchPostStatus = 'rejected'
             })
         }
     })
-export const selectStatus = (state) => state.listings.status;
-export const { setClickedPost } = listingsSlice.actions;
+export const selectHomeListingsStatus = (state) => state.listings.homeListingsStatus;
+export const selectFetchPostStatus = (state) => state.listings.fetchPostStatus;
+export const selectCurrentPost = (state) => state.listings.currentPost
 export const selectHomeListings = (state) => state.listings.listings;
 export default listingsSlice.reducer;
