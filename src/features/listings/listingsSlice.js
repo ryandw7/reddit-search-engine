@@ -63,7 +63,6 @@ const listingsSlice = createSlice({
                     let hasImage = false;
                     let imgUrl = null;
                     if (is_video) {
-                        console.log('is video');
                         hasImage = false;
                     }
                     else if (url.includes('jpg') || url.includes('png') || url.includes('jpeg')) {
