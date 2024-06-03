@@ -2,7 +2,7 @@ import { selectSignedIn } from "../profile/profileSlice";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectSubreddits, fetchSubscribedSubreddits, selectStatus, clearSubreddits } from "./subredditsSlice";
-import SubredditTag from "../../components/subredditTag/SubredditTag";
+import SubredditTag from "../../components/subreddit/SubredditTag.js";
 import { useDispatch } from "react-redux";
 
 export default function Subreddits() {

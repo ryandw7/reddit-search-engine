@@ -1,5 +1,5 @@
 import '../../app/App.css';
-import SubredditTag from '../subredditTag/SubredditTag';
+import SubredditTag from '../subreddit/SubredditTag';
 import { useState, useEffect } from 'react';
 export default function Listing({ listing, handleClick }) {
     const { permalink, id, imgUrl, hasImg, isVideo, preview, subredditName, author, title, thumbnail, thumbnailHeight, thumbnailWidth, numComments, ups, url } = listing;

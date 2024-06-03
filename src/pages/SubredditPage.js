@@ -1,9 +1,9 @@
 import { fetchSubreddit } from "../features/subreddit/subredditSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-
+import Subreddit from '../features/subreddit/Subreddit.js'
 export default function SubredditPage(){
-    dispatch = useDispatch();
+    const dispatch = useDispatch();
     const subreddit = window.location.href.split('/r/')[1];
     console.log(subreddit)
     useEffect(()=>{
@@ -11,8 +11,8 @@ export default function SubredditPage(){
     }, [])
 
     return (
-        <div>
-            
+        <div className="page">
+            <Subreddit />
         </div>
     )
 }

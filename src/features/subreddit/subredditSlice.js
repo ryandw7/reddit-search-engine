@@ -2,16 +2,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchSubreddit = createAsyncThunk(
     'subreddit/fetchSubreddit', async(subreddit) => {
-        const res = await fetch(`https://www.reddit.com/r/${subreddit}/about`);
+      try{ 
+        const res = await fetch(`https://www.reddit.com/r/${subreddit}/about.json`);
         const data = await res.json();
         return data
+      }catch(error){
+        console.log(error);
+        return error;
+      }
     }
 )
 
 const subredditSlice = createSlice({
     name: 'subreddit',
     initialState: {
-    fetchSubredditsStatus: '',
+    fetchSubredditStatus: '',
     subredditAbout: {}
     },
     reducers: {
@@ -20,17 +25,18 @@ const subredditSlice = createSlice({
     extraReducers: builder => {
     builder
     .addCase(fetchSubreddit.pending, (state)=>{
-      state.fetchSubredditsStatus = 'pending';
+      state.fetchSubredditStatus = 'pending';
     })
     .addCase(fetchSubreddit.fulfilled, (state, action)=>{
-        state.fetchSubredditsStatus = 'fulfilled';
+        state.fetchSubredditStatus = 'fulfilled';
         state.subredditAbout = action.payload;
       })
       .addCase(fetchSubreddit.rejected, (state)=>{
-        state.fetchSubredditsStatus = 'rejected';
+        state.fetchSubredditStatus = 'rejected';
       })
     }
 });
 
-export const selectFetchSubredditStatus = (state) => state.fetchSubredditsStatus;
+export const selectFetchSubredditStatus = (state) => state.subreddit.fetchSubredditStatus;
+export const selectSubredditAbout = (state) => state.subreddit.subredditAbout;
 export default subredditSlice.reducer;
