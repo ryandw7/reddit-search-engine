@@ -27,7 +27,7 @@ export default function HomeListings() {
         }
     }
     return (
-        <div data-testid="home-listings" className="page">
+        <div data-testid="home-listings">
             {renderListings()}
         </div>
     )

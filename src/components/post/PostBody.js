@@ -11,12 +11,13 @@ export default function Post({ post }) {
             <h4 className="listing-sr-name">{subreddit}</h4>
             <h5 className="listing-author">u/{author}</h5>
 
-            {(url && url.includes('html'))
+            {(url && !url.includes('redd'))
                 ?
                 <div className="article-link">
-                    (thumbnail && thumbnail.includes('png' || 'jpeg' || 'jpg')) && <img src={thumbnail} width="20%" />
+                    <a href={url}>
+                    {(thumbnail && (thumbnail.includes('jpg') || thumbnail.includes('jpeg') || thumbnail.includes('png'))) && <img src={thumbnail} />}
                     <h3>{title}</h3>
-                    <a href={url}>{url}</a>
+                    </a>
                 </div>
                 :
                 <h3 className="listing-title">{title}</h3>
