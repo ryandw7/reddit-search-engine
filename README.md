@@ -11,7 +11,7 @@ Figma Wireframe: https://www.figma.com/design/sgtEO6tfSd6rgiXKP9fyPF/reddit-sear
 
 To clone this repository and access it locally, use:
 
-git clone https://github.com/ryandw7/reddit-search-engine.git
+### `git clone https://github.com/ryandw7/reddit-search-engine.git`
 
 To install required dependencies run:
 
@@ -54,12 +54,15 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 ## Dependencies
 
-- React-redux
-- ReduxJS Toolkit
+- React-redux & ReduxJS Toolkit
+    -Manage state of application
 - React-router
-- React-plater
+    -Handle route changes from page to page
+- React-player
+    -Handle video rendering on reddit posts
 - React-markdown
-
+    -Parse self-text of post data and format with markdown
+  
 ### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
