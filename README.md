@@ -55,13 +55,13 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ## Dependencies
 
 - React-redux & ReduxJS Toolkit
-    -Manage state of application
+  -Manage state of application
 - React-router
-    -Handle route changes from page to page
+  -Handle route changes from page to page
 - React-player
-    -Handle video rendering on reddit posts
+  -Handle video rendering on reddit posts
 - React-markdown
-    -Parse self-text of post data and format with markdown
+  -Parse self-text of post data and format with markdown
   
 ### Code Splitting
 
