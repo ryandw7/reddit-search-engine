@@ -1,8 +1,21 @@
-# Reddit Search Engine
+# Reddit Lite
+Reddit Lite is an application powered by React JS and many of its popular libraries. The data is fetched using calls to the reddit API
 
 Figma Wireframe: https://www.figma.com/design/sgtEO6tfSd6rgiXKP9fyPF/reddit-search-engine-wireframe?node-id=0%3A1&t=LbegXJkA1K8MvRKS-1
 
-## Available Scripts
+## Table of Contents
+- [Installation and Available Scripts](#Installation)
+- [Dependencies](#Dependencies)
+
+## Installation and Available Scripts
+
+To clone this repository and access it locally, use:
+
+git clone https://github.com/ryandw7/reddit-search-engine.git
+
+To install required dependencies run:
+
+### `npm install`
 
 In the project directory, you can run:
 
